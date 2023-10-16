@@ -2,13 +2,14 @@
 
 int main(){
     char ch[1024];
+    char *buf;
     FILE *fp = NULL;
     fp = fopen("textfile.txt", "r");
-        if (fp != NULL){
-            fgets(ch, sizeof(ch), fp);
-        }
+        if (fp == NULL) printf("Ошибка чтения");
+            while(!feof(fp)){
+            fgets(ch, sizeof(ch), fp);       
+            printf("%s", ch);
+    }    
     fclose (fp);
-    printf("%s", ch);
     return 0;
-
 }
