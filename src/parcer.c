@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <getopt.h>
+#include <stdlib.h>
+#include <string.h>
 
 int parce (int argc, char *argv[]) {
     int return_value = 0;
     int option_index = 0;
-    int c = 0;
+    int c = 0, fcount = 0;
+    char **fname = NULL;
     char short_options[] = "benst";
     const struct option long_options[] =
     {
@@ -22,6 +25,9 @@ int parce (int argc, char *argv[]) {
         if(c == 's') printf("flag s\n");
         if(c == 't') printf("flag t\n");
     }
+    fcount = argc - optind;
+    fname = (char**)malloc(sizeof(char*));
+    *fname = argv[optind];
     if(optind < argc){
         while (optind < argc)
 
