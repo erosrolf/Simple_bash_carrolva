@@ -23,7 +23,7 @@ int parser(int argc, char *argv[], int *first_fname) {
     if (c == 't')
       printf("flag t\n");
   }
-   *first_fname = argc - optind;
-   printf("%s\n", argv[*first_fname]);
+   *first_fname = optind;
   return return_value;
 }
+

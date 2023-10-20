@@ -10,11 +10,10 @@ int main(int argc, char *argv[]) {
         fname = (char **)malloc(sizeof(char *) * fcount);
     if(!fname)
         exit(1);
-        printf("f = %d\n", first_fname);
     for(int i = 0; i < fcount; i++){
-        printf("i = %d\n", i);
         fname[i] = argv[i + first_fname];
         printf("%s\n", fname[i]);
+
     }
   }
     return 0;
