@@ -1,8 +1,6 @@
 #include "parser.h"
 
-int parser(int argc, char *argv[], char **fname, int *count) {
-  if(!fname)
-    return 1;
+int parser(int argc, char *argv[], int *first_fname) {
   int return_value = 0;
   int option_index = 0;
   int c = 0;
@@ -25,16 +23,7 @@ int parser(int argc, char *argv[], char **fname, int *count) {
     if (c == 't')
       printf("flag t\n");
   }
-  *count = argc - optind;
-  if(*count > 0){
-  fname = (char **)malloc(sizeof(char *) * *count);
-  if(!fname) 
-    return_value = 1;
-  else {
-    for(int i = 0; i < *count; i++) {
-        fname[i] = argv[optind + i];
-      }
-    }
-  }
+   *first_fname = argc - optind;
+   printf("%s\n", argv[*first_fname]);
   return return_value;
 }

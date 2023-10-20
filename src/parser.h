@@ -6,6 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int parser(int argc, char *argv[], char **fname, int *count);
+int parser(int argc, char *argv[], int *first_fname);
 
 #endif // PARSER_H
