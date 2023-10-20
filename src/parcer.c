@@ -27,39 +27,12 @@ int parce(int argc, char *argv[]) {
     if (c == 't')
       printf("flag t\n");
   }
-  fcount = argc - optind;
+  if((fcount = argc - optind) > 0){
   fname = (char **)malloc(sizeof(char *) * fcount);
-  fname[0] = argv[optind];
-  fname[1] = argv[optind + 1];
-  printf("%s\n", fname[0]);
-  printf("%s\n", fname[1]);
-  // if (optind < argc) {
-  //   while (optind < argc)
-  //
-  //   {
-  //     printf("%s\n", argv[optind++]);
-  //   }
-  // }
-  return return_value;
-}
-
-int is_num(char *ch) {
-  int i = 0;
-  while (ch[i] != 0x00) {
-    printf("i = %d\n", i);
-    i++;
+    for(int i = 0; i < fcount; i++) {
+        fname[i] = argv[optind + i];
+        printf("%s\n", fname[i]);
+    }
   }
-
-  return ch[0] == '0' || ch[0] == '1';
-}
-
-int main(int argc, char *argv[]) {
-  char *str = malloc(100);
-  sscanf("ab10", "%s", str);
-  printf("str = %s\n", str);
-
-  char ch = '0';
-  printf("res = %d\n", is_num(str));
-  // parce(argc, argv);
-  return 0;
+  return return_value;
 }
