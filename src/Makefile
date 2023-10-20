@@ -1,14 +1,14 @@
 TARGET = cat
-
-CC = gcc -c -Wall -Wextra -Werror -std=c11
+CC = gcc
 
 $(TARGET): main.o parser.o
 	$(CC) main.o parser.o -o $(TARGET)
 
-main.o:
-	$(CC) main.c -o main.o
-parser.o:
-	$(CC) parser.c -o parser.o
+main.o: main.c
+	$(CC) -c main.c parser.c -o main.o
+
+parser.o: parser.c
+	$(CC) -c parser.c -o parser.o
 
 clean:
 	rm -rf *.o $(TARGET)
