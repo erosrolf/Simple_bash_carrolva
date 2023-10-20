@@ -1,13 +1,11 @@
-#include <getopt.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "parser.h"
 
-int parser(int argc, char *argv[]) {
+int parser(int argc, char *argv[], char **fname, int *count) {
+  if(!fname)
+    return 1;
   int return_value = 0;
   int option_index = 0;
-  int c = 0, fcount = 0;
-  char **fname = NULL;
+  int c = 0;
   char short_options[] = "benst";
   const struct option long_options[] = {{"number-nonblank", 0, NULL, 'b'},
                                         {NULL, 0, NULL, 'e'},
@@ -27,11 +25,15 @@ int parser(int argc, char *argv[]) {
     if (c == 't')
       printf("flag t\n");
   }
-  if((fcount = argc - optind) > 0){
-  fname = (char **)malloc(sizeof(char *) * fcount);
-    for(int i = 0; i < fcount; i++) {
+  *count = argc - optind;
+  if(*count > 0){
+  fname = (char **)malloc(sizeof(char *) * *count);
+  if(!fname) 
+    return_value = 1;
+  else {
+    for(int i = 0; i < *count; i++) {
         fname[i] = argv[optind + i];
-        printf("%s\n", fname[i]);
+      }
     }
   }
   return return_value;
